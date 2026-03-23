@@ -39,5 +39,25 @@ public class Main {
         reader1.increaseBorrowedCount();
         reader1.printData();
         reader2.printData();
+
+        //Task3: Library
+        Library myLibrary = new Library(5);
+
+        Book book1 = new Book("The Witcher", "A. Sapkowski", 300, true);
+        Book book2 = new Book("Solaris", "S. Lem", 200, true);
+        Book book3 = new Book("Dune", "F. Herbert", 500, true);
+
+        myLibrary.addBook(b1);
+        myLibrary.addBook(b2);
+        myLibrary.addBook(b3);
+
+        myLibrary.printAvailableBooks();
+
+        System.out.println("Number of available books: " + myLibrary.countAvailableBooks());
+
+        Book found = myLibrary.findBookByTitle("Solaris");
+        if (found != null) {
+            System.out.println("Found book: " + found.getTitle());
+        }
     }
 }
