@@ -49,4 +49,29 @@ public class Library {
         }
         return count;
     }
+
+    //The following two methods help the program handle interactions between readers and books
+    public void borrowBook(String title, Reader reader) {
+        Book book = findBookByTitle(title);
+
+        if (book != null && book.isAvailable()) {
+            book.borrow();
+            reader.increaseBorrowedCount();
+            System.out.println("Success: " + title + " has been borrowed.");
+        } else {
+            System.out.println("Error: Book '" + title + "' is not available or not found.");
+        }
+    }
+
+    public void returnBook(String title, Reader reader) {
+        Book book = findBookByTitle(title);
+
+        if (book != null && !book.isAvailable()) {
+            book.returnBook();
+            reader.decreaseBorrowedCount();
+            System.out.println("Success: " + title + " has been returned.");
+        } else {
+            System.out.println("Error: Cannot return " + title + ".");
+        }
+    }
 }
