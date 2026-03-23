@@ -59,5 +59,29 @@ public class Main {
         if (found != null) {
             System.out.println("Found book: " + found.getTitle());
         }
+
+        //Task4: Updating Library
+        Library library = new Library(10);
+        Reader reader = new Reader("John", "Doe", "BK-100");
+
+        library.addBook(new Book("The Witcher", "A. Sapkowski", 300, true));
+        library.addBook(new Book("Solaris", "S. Lem", 200, true));
+        library.addBook(new Book("Dune", "F. Herbert", 500, true));
+
+        library.printAvailableBooks();
+
+        System.out.println("\nBorrowing 'Solaris'...");
+        library.borrowBook("Solaris", reader);
+
+        System.out.println("\nLibrary state after borrowing:");
+        library.printAvailableBooks();
+        reader.printData();
+
+        System.out.println("\nReturning 'Solaris'...");
+        library.returnBook("Solaris", reader);
+
+        System.out.println("\nFinal State:");
+        library.printAvailableBooks();
+        reader.printData();
     }
 }
